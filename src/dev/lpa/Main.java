@@ -1,15 +1,29 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+package dev.lpa;
+
+import java.io.File;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+
+    }
+
+    private static void useFile(String fileName){
+
+        File file = new File(fileName);
+        boolean fileExists = file.exists();
+
+        System.out.printf("File '%s' %s%n", fileName, fileExists ? "exists." : "does not exist.");
+
+        if(fileExists){
+            System.out.println("Deleting file: " + fileName);
+            fileExists = !file.delete();
+        }
+
+        if(!fileExists){
+            // Ignoring this for simplicity, but it could return an unresolved error
+            file.createNewFile();
         }
     }
 }
